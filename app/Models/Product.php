@@ -10,4 +10,8 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'price'];
+
+    public function clients(){
+        return $this->belongsToMany('App\Models\Client', 'purchases')->withPivot('quantity')->withTimestamps();
+    }
 }
